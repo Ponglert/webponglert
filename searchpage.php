@@ -11,7 +11,7 @@
     <body>
         <form name= "frmsearch" action="searchpage.php" method="post" role="search">
             <div>
-            <input type="text" name="search" placeholder="ค้นหาจากชื่อ-นามสกุล">
+            <input type="text" name="search" size = "60" placeholder="ค้นหาจากชื่อ-นามสกุล-เบอร์โทร-อีเมล์">
             <span>
                 <button type="submit"> ค้นหา</button>
             </span>
@@ -39,7 +39,7 @@
                 include'dbconnect.php';
                 if(isset($_POST['search'])){
                     $search = $_POST['search'];
-                    $stmt=$con->prepare("SELECT * from members WHERE name_mem LIKE :A1");
+                    $stmt=$con->prepare("SELECT * from members WHERE name_mem LIKE :A1 or phone_mem LIKE :A1 or email_mem LIKE :A1 ORDER BY name_mem ASC");
                     $wordlike = '%'.$search.'%';
                     $stmt -> bindParam(':A1',$wordlike);
                     $stmt->execute();
