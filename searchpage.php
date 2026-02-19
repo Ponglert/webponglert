@@ -60,9 +60,13 @@
                     </td>
                     <td><?php echo $row['phone_mem'];?></td>
                     <td><?php echo $row['email_mem'];?></td>
-                    <td class="text-center"><a button href="editpage.php?id=<?php echo
-                    $row['id_mem']?>"> แก้ไข</button></a>
+                    <td>
+                        <form method="POST" action="editpage.php">
+                            <input type="hidden" name="id_mem" value="<?php echo $row['id_mem']; ?>">
+                            <button type="submit">แก้ไข</button>
+                        </form>
                     </td>
+
                     </tr>
                     <?php
                 }
